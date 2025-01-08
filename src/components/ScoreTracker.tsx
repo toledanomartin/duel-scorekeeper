@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import ScoreTable from "./ScoreTable";
 import SupremacyTable from "./SupremacyTable";
 
 const ScoreTracker = () => {
+  const navigate = useNavigate();
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
   const [scores, setScores] = useState({
@@ -43,6 +46,25 @@ const ScoreTracker = () => {
     }, 0);
   };
 
+  const handleFinishGame = () => {
+    if (!player1 || !player2) {
+      alert("Please enter both player names before finishing the game.");
+      return;
+    }
+
+    navigate("/results", {
+      state: {
+        player1,
+        player2,
+        scores: {
+          player1Total: calculateTotal(0),
+          player2Total: calculateTotal(1),
+        },
+        supremacy,
+      },
+    });
+  };
+
   return (
     <div className="container mx-auto">
       <ScoreTable
@@ -58,6 +80,14 @@ const ScoreTracker = () => {
         supremacy={supremacy}
         setSupremacy={setSupremacy}
       />
+      <div className="mt-8 flex justify-center">
+        <Button
+          onClick={handleFinishGame}
+          className="px-8 py-4 text-lg"
+        >
+          Finish Game
+        </Button>
+      </div>
     </div>
   );
 };
