@@ -1,5 +1,4 @@
-import { Circle, CurrencyDollar, Pyramid, Shield } from "lucide-react";
-import { ColorFill, Palette } from "lucide-react";
+import { Circle, DollarSign, Pyramid, Shield, Square } from "lucide-react";
 
 interface ScoreTableProps {
   player1: string;
@@ -33,25 +32,25 @@ const ScoreTable = ({
     { 
       key: "blueCards", 
       label: "Blue Cards",
-      icon: <ColorFill className="inline-block mr-2" size={18} color="#0EA5E9" />,
+      icon: <Square className="inline-block mr-2" size={18} fill="#0EA5E9" color="#0EA5E9" />,
       textColor: "text-[#0EA5E9]"
     },
     { 
       key: "greenCards", 
       label: "Green Cards",
-      icon: <ColorFill className="inline-block mr-2" size={18} color="#059669" />,
+      icon: <Square className="inline-block mr-2" size={18} fill="#059669" color="#059669" />,
       textColor: "text-[#059669]"
     },
     { 
       key: "yellowCards", 
       label: "Yellow Cards",
-      icon: <ColorFill className="inline-block mr-2" size={18} color="#EAB308" />,
+      icon: <Square className="inline-block mr-2" size={18} fill="#EAB308" color="#EAB308" />,
       textColor: "text-[#EAB308]"
     },
     { 
       key: "guildCards", 
       label: "Guild Cards",
-      icon: <Palette className="inline-block mr-2" size={18} color="#8B5CF6" />,
+      icon: <Square className="inline-block mr-2" size={18} fill="#8B5CF6" color="#8B5CF6" />,
       textColor: "text-[#8B5CF6]"
     },
     { 
@@ -69,7 +68,7 @@ const ScoreTable = ({
     { 
       key: "coins", 
       label: "Coins",
-      icon: <CurrencyDollar className="inline-block mr-2" size={18} />,
+      icon: <DollarSign className="inline-block mr-2" size={18} />,
       textColor: "text-gray-700"
     },
     { 
