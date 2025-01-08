@@ -1,3 +1,6 @@
+import { Circle, CurrencyDollar, Pyramid, Shield } from "lucide-react";
+import { ColorFill, Palette } from "lucide-react";
+
 interface ScoreTableProps {
   player1: string;
   player2: string;
@@ -27,14 +30,54 @@ const ScoreTable = ({
   calculateTotal,
 }: ScoreTableProps) => {
   const categories = [
-    { key: "blueCards", label: "Blue Cards" },
-    { key: "greenCards", label: "Green Cards" },
-    { key: "yellowCards", label: "Yellow Cards" },
-    { key: "guildCards", label: "Guild Cards" },
-    { key: "wonders", label: "Wonders" },
-    { key: "progressTokens", label: "Progress Tokens" },
-    { key: "coins", label: "Coins" },
-    { key: "conflicts", label: "Conflicts" },
+    { 
+      key: "blueCards", 
+      label: "Blue Cards",
+      icon: <ColorFill className="inline-block mr-2" size={18} color="#0EA5E9" />,
+      textColor: "text-[#0EA5E9]"
+    },
+    { 
+      key: "greenCards", 
+      label: "Green Cards",
+      icon: <ColorFill className="inline-block mr-2" size={18} color="#059669" />,
+      textColor: "text-[#059669]"
+    },
+    { 
+      key: "yellowCards", 
+      label: "Yellow Cards",
+      icon: <ColorFill className="inline-block mr-2" size={18} color="#EAB308" />,
+      textColor: "text-[#EAB308]"
+    },
+    { 
+      key: "guildCards", 
+      label: "Guild Cards",
+      icon: <Palette className="inline-block mr-2" size={18} color="#8B5CF6" />,
+      textColor: "text-[#8B5CF6]"
+    },
+    { 
+      key: "wonders", 
+      label: "Wonders",
+      icon: <Pyramid className="inline-block mr-2" size={18} />,
+      textColor: "text-gray-700"
+    },
+    { 
+      key: "progressTokens", 
+      label: "Progress Tokens",
+      icon: <Circle className="inline-block mr-2" size={18} fill="#059669" color="#059669" />,
+      textColor: "text-gray-700"
+    },
+    { 
+      key: "coins", 
+      label: "Coins",
+      icon: <CurrencyDollar className="inline-block mr-2" size={18} />,
+      textColor: "text-gray-700"
+    },
+    { 
+      key: "conflicts", 
+      label: "Conflicts",
+      icon: <Shield className="inline-block mr-2" size={18} fill="#DC2626" color="#DC2626" />,
+      textColor: "text-[#DC2626]"
+    },
   ];
 
   return (
@@ -48,7 +91,7 @@ const ScoreTable = ({
               value={player1}
               onChange={(e) => setPlayer1(e.target.value)}
               placeholder="Player 1"
-              className="w-full bg-transparent text-center text-white placeholder-white/50"
+              className="w-full bg-transparent text-center text-duel-text placeholder-duel-text/50"
             />
           </th>
           <th className="w-1/3">
@@ -57,21 +100,24 @@ const ScoreTable = ({
               value={player2}
               onChange={(e) => setPlayer2(e.target.value)}
               placeholder="Player 2"
-              className="w-full bg-transparent text-center text-white placeholder-white/50"
+              className="w-full bg-transparent text-center text-duel-text placeholder-duel-text/50"
             />
           </th>
         </tr>
       </thead>
       <tbody>
-        {categories.map(({ key, label }) => (
+        {categories.map(({ key, label, icon, textColor }) => (
           <tr key={key}>
-            <td>{label}</td>
+            <td className={`flex items-center ${textColor}`}>
+              {icon}{label}
+            </td>
             <td>
               <input
                 type="number"
                 value={scores[key as keyof typeof scores][0] || ""}
                 onChange={(e) => updateScore(key, 0, e.target.value)}
                 min="0"
+                className="w-full text-center"
               />
             </td>
             <td>
@@ -80,6 +126,7 @@ const ScoreTable = ({
                 value={scores[key as keyof typeof scores][1] || ""}
                 onChange={(e) => updateScore(key, 1, e.target.value)}
                 min="0"
+                className="w-full text-center"
               />
             </td>
           </tr>
