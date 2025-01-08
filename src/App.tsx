@@ -18,7 +18,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/results" element={<Results />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> basename="duel-scorekeeper">
     </TooltipProvider>
   </QueryClientProvider>
 );
