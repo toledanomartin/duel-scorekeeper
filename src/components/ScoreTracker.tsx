@@ -24,6 +24,9 @@ const ScoreTracker = () => {
     scientific: false,
   });
 
+  const [militaryWinner, setMilitaryWinner] = useState("");
+  const [scientificWinner, setScientificWinner] = useState("");
+
   const updateScore = (category: keyof typeof scores, playerIndex: 0 | 1, value: string) => {
     const numValue = value === "" ? 0 : parseInt(value);
     if (isNaN(numValue)) return;
@@ -52,6 +55,16 @@ const ScoreTracker = () => {
       return;
     }
 
+    if (supremacy.military && !militaryWinner) {
+      alert("Please select a winner for military supremacy.");
+      return;
+    }
+
+    if (supremacy.scientific && !scientificWinner) {
+      alert("Please select a winner for scientific supremacy.");
+      return;
+    }
+
     navigate("/results", {
       state: {
         player1,
@@ -60,7 +73,11 @@ const ScoreTracker = () => {
           player1Total: calculateTotal(0),
           player2Total: calculateTotal(1),
         },
-        supremacy,
+        supremacy: {
+          ...supremacy,
+          militaryWinner,
+          scientificWinner,
+        },
       },
     });
   };
@@ -79,6 +96,12 @@ const ScoreTracker = () => {
       <SupremacyTable
         supremacy={supremacy}
         setSupremacy={setSupremacy}
+        player1={player1}
+        player2={player2}
+        militaryWinner={militaryWinner}
+        scientificWinner={scientificWinner}
+        setMilitaryWinner={setMilitaryWinner}
+        setScientificWinner={setScientificWinner}
       />
       <div className="mt-8 flex justify-center">
         <Button
