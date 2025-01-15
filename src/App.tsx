@@ -13,12 +13,12 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="duel-scorekeeper">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/results" element={<Results />} />
         </Routes>
-      </BrowserRouter> basename="duel-scorekeeper
+      </BrowserRouter> 
     </TooltipProvider>
   </QueryClientProvider>
 );
