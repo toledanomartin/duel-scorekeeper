@@ -22,15 +22,15 @@ const Results = () => {
   const result = location.state as GameResult;
 
   const getWinner = () => {
-    // Check for military supremacy
-    if (result.supremacy.military) {
+    // Check for military supremacy first
+    if (result.supremacy.military && result.supremacy.militaryWinner) {
       return result.supremacy.militaryWinner;
     }
-    // Check for scientific supremacy
-    if (result.supremacy.scientific) {
+    // Then check for scientific supremacy
+    if (result.supremacy.scientific && result.supremacy.scientificWinner) {
       return result.supremacy.scientificWinner;
     }
-    // If no supremacy, check points
+    // Only check points if no supremacy was achieved
     const { player1Total, player2Total } = result.scores;
     if (player1Total > player2Total) return result.player1;
     if (player2Total > player1Total) return result.player2;
@@ -38,10 +38,10 @@ const Results = () => {
   };
 
   const getWinReason = () => {
-    if (result.supremacy.military) {
+    if (result.supremacy.military && result.supremacy.militaryWinner) {
       return "Military Supremacy Victory!";
     }
-    if (result.supremacy.scientific) {
+    if (result.supremacy.scientific && result.supremacy.scientificWinner) {
       return "Scientific Supremacy Victory!";
     }
     return "Victory by Points!";
@@ -73,10 +73,10 @@ const Results = () => {
           {(result.supremacy.military || result.supremacy.scientific) && (
             <div className="mt-4 p-4 bg-gray-100 rounded">
               <h3 className="font-semibold mb-2">Supremacy Achieved</h3>
-              {result.supremacy.military && (
+              {result.supremacy.military && result.supremacy.militaryWinner && (
                 <p className="text-red-600">Military Supremacy by {result.supremacy.militaryWinner}</p>
               )}
-              {result.supremacy.scientific && (
+              {result.supremacy.scientific && result.supremacy.scientificWinner && (
                 <p className="text-green-600">Scientific Supremacy by {result.supremacy.scientificWinner}</p>
               )}
             </div>
