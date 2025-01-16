@@ -31,42 +31,50 @@ const ScoreTable = ({
   const categories = [
     { 
       key: "blueCards", 
-      icon: <Square className="inline-block" size={18} fill="#0EA5E9" color="#0EA5E9" />,
+      label: "Blue Cards",
+      icon: <Square className="inline-block mr-2" size={18} fill="#0EA5E9" color="#0EA5E9" />,
       textColor: "text-[#0EA5E9]"
     },
     { 
       key: "greenCards", 
-      icon: <Square className="inline-block" size={18} fill="#059669" color="#059669" />,
+      label: "Green Cards",
+      icon: <Square className="inline-block mr-2" size={18} fill="#059669" color="#059669" />,
       textColor: "text-[#059669]"
     },
     { 
       key: "yellowCards", 
-      icon: <Square className="inline-block" size={18} fill="#EAB308" color="#EAB308" />,
+      label: "Yellow Cards",
+      icon: <Square className="inline-block mr-2" size={18} fill="#EAB308" color="#EAB308" />,
       textColor: "text-[#EAB308]"
     },
     { 
       key: "guildCards", 
-      icon: <Square className="inline-block" size={18} fill="#8B5CF6" color="#8B5CF6" />,
+      label: "Guild Cards",
+      icon: <Square className="inline-block mr-2" size={18} fill="#8B5CF6" color="#8B5CF6" />,
       textColor: "text-[#8B5CF6]"
     },
     { 
       key: "wonders", 
-      icon: <Pyramid className="inline-block" size={18} />,
+      label: "Wonders",
+      icon: <Pyramid className="inline-block mr-2" size={18} />,
       textColor: "text-gray-700"
     },
     { 
       key: "progressTokens", 
-      icon: <Circle className="inline-block" size={18} fill="#059669" color="#059669" />,
+      label: "Progress Tokens",
+      icon: <Circle className="inline-block mr-2" size={18} fill="#059669" color="#059669" />,
       textColor: "text-gray-700"
     },
     { 
       key: "coins", 
-      icon: <DollarSign className="inline-block" size={18} />,
+      label: "Coins",
+      icon: <DollarSign className="inline-block mr-2" size={18} />,
       textColor: "text-gray-700"
     },
     { 
       key: "conflicts", 
-      icon: <Shield className="inline-block" size={18} fill="#DC2626" color="#DC2626" />,
+      label: "Military Conflicts",
+      icon: <Shield className="inline-block mr-2" size={18} fill="#DC2626" color="#DC2626" />,
       textColor: "text-[#DC2626]"
     },
   ];
@@ -97,10 +105,11 @@ const ScoreTable = ({
         </tr>
       </thead>
       <tbody>
-        {categories.map(({ key, icon, textColor }) => (
+        {categories.map(({ key, label, icon, textColor }) => (
           <tr key={key}>
-            <td className={`flex items-center justify-center ${textColor}`}>
+            <td className={`flex items-center gap-1 ${textColor}`}>
               {icon}
+              <span>{label}</span>
             </td>
             <td>
               <input
