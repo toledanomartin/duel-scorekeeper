@@ -90,7 +90,7 @@ const ScoreTable = ({
               value={player1}
               onChange={(e) => setPlayer1(e.target.value)}
               placeholder="Player 1"
-              className="w-full bg-transparent text-center text-duel-text placeholder-duel-text/50"
+              className="w-full bg-transparent text-center text-white placeholder-white/50"
             />
           </th>
           <th className="w-1/3">
@@ -99,7 +99,7 @@ const ScoreTable = ({
               value={player2}
               onChange={(e) => setPlayer2(e.target.value)}
               placeholder="Player 2"
-              className="w-full bg-transparent text-center text-duel-text placeholder-duel-text/50"
+              className="w-full bg-transparent text-center text-white placeholder-white/50"
             />
           </th>
         </tr>
